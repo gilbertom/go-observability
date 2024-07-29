@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    command: ["./cloudrun"]
+    depends_on:
+      - otel-collector
+      - zipkin
+
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    restart: always
+    command: ["--config", "/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317" # Porta gRPC OTLP
+      - "4318:4318" # Porta HTTP OTLP
+      - "55680:55680" # Porta de depuração
+
+  zipkin:
+    image: openzipkin/zipkin
+    restart: always
+    ports:
+      - "9411:9411"
