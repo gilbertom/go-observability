@@ -107,8 +107,7 @@ Esta aplicação possui instrumentação que possibilita o rastreamento das requ
 
 Abaixo um exemplo de requisição:
 
-![Exemplo de Imagem do Zipkin](https://github.com/gilbertom/go-observability/assets/Zipkin.jpg)
-
+![Exemplo de Imagem do Zipkin](https://github.com/gilbertom/go-observability/blob/master/assets/Zipkin.jpg)
 
 <br>
 
